@@ -20,12 +20,29 @@ export const productsApi = createApi({
     addProduct : builder.mutation({
       query: (newProduct) => ({
         url: '/products/add', // from api docs, to add new product, we should pass this endpoint
-        method: 'POST',
+        method: 'POST', // also from api docs of dummyjson.com
         headers: {
           'Content-Type': 'application/json'}, // setting content type to json, also from docs
         body: newProduct,
       }),
-    })
+    }),
+
+    updateProduct : builder.mutation({
+      query: ({id, updatedProduct}) => ({
+        url: `/products/${id}`, // from api docs, to update product, we should pass this endpoint
+        method: 'PUT', // also from api docs of dummyjson.com
+        headers: {
+          'Content-Type': 'application/json'}, // setting content type to json, also from docs
+        body: updatedProduct,
+      }),
+    }),
+
+    deleteProduct: builder.mutation({
+      query: (id) => ({
+        url: `/products/${id}`, // from api docs, to delete product, we should pass this endpoint
+        method: 'DELETE', // also from api docs of dummyjson.com
+      }),
+    }),
   }),
 });
 
@@ -33,4 +50,4 @@ export const productsApi = createApi({
 // from productsApi as we created above, exporting self generated i.e. RTK query generated, custom hook to use in our components.
 // see attached video in TG (channel - react-redux-Huxn) for more understanding this line 24 code
 //in nutshell, based on the endpoint name, RTK query generates a custom hook for us to use in our components.
-export const { useGetAllProductsQuery, useGetProductByIdQuery, useAddProductMutation } = productsApi; //grabbing this custom hook from productsApi, so we can use it in our components to fetch data.
+export const { useGetAllProductsQuery, useGetProductByIdQuery, useAddProductMutation, useUpdateProductMutation, useDeleteProductMutation } = productsApi; //grabbing this custom hook from productsApi, so we can use it in our components to fetch data.
