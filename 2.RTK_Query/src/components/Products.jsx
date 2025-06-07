@@ -17,7 +17,10 @@ const Products = () => {
   <div>
     <ul>
         {data?.products.map((p)=> (
-        <li key={p.id}>{p.title}</li>
+        <li key={p.id}>
+            <h3>{p.title}</h3>
+            <p>{p.description}</p>
+            </li>
     ))}
     </ul>
     
