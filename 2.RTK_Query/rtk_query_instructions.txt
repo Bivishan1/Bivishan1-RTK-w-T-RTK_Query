@@ -1,0 +1,3 @@
+Note : 
+1. like, we create slice in RTK, we need to create service directory inside /app directory and for slice file,, we can give dummyDat.js or sth like that,,
+2. 
